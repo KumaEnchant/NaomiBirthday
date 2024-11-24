@@ -1,0 +1,301 @@
+/* General body styling */
+body {
+  background-color: #f7d9da;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Envelope wrapper styling */
+.envlope-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 380px;
+  width: 100%;
+  max-width: 400px; /* Limit the maximum width */
+  margin: 20px;
+}
+
+/* Envelope styling */
+#envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #f9c5c8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* Center the envelope horizontally */
+}
+
+/* Front flap styling */
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  border-top: 98px solid #ff3333;
+  transform-origin: top;
+  pointer-events: none;
+}
+
+.pocket {
+  border-left: 140px solid #ff9999;
+  border-right: 140px solid #ff9999;
+  border-bottom: 90px solid #fd8787;
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Letter styling */
+.letter {
+  position: relative;
+  background-color: #f9c5c8;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+}
+
+.letter:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 25%, rgba(239, 215, 239, 0.7) 55%, #eed7ef 100%);
+}
+
+/* Word lines styling */
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 14%;
+  background-color: #fdb7ba;
+}
+
+.words.line1 {
+  top: 15%;
+  width: 20%;
+  height: 7%;
+}
+
+.words.line2 {
+  top: 30%;
+}
+
+.words.line3 {
+  top: 50%;
+}
+
+.words.line4 {
+  top: 70%;
+}
+
+/* Envelope animation */
+.open .flap {
+  transform: rotateX(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 1;
+}
+
+.close .flap {
+  transform: rotateX(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.close .letter {
+  transform: translateY(0px);
+  transition: transform 0.4s ease, z-index 1s;
+  z-index: 1;
+}
+
+.open .letter {
+  transform: translateY(-60px);
+  transition: transform 0.4s 0.6s ease, z-index 0.6s;
+  z-index: 2;
+}
+
+/* Hearts styling */
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #d00000;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  pointer-events: none;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  animation: none;
+}
+
+.a1 {
+  left: 20%;
+  transform: scale(0.6);
+  opacity: 1;
+  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(1);
+  opacity: 1;
+  animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a3 {
+  left: 10%;
+  transform: scale(0.8);
+  opacity: 1;
+  animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+/* Animations */
+@keyframes slideUp {
+  0% { top: 0; }
+  100% { top: -600px; }
+}
+
+@keyframes sideSway {
+  0% { margin-left: 0px; }
+  100% { margin-left: 50px; }
+}
+
+/* Reset and button styles */
+.reset {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reset button {
+  font-weight: 800;
+  transition: all 0.1s linear;
+  background-color: transparent;
+  border: solid 2px #ff5757;
+  border-radius: 4px;
+  color: #ff5757;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.reset button:hover {
+  background-color: #fc9d9d;
+  color: #a10000;
+}
+
+/* Slow fade-in animation for the "Next" button */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#next {
+  display: none; /* Initially hidden */
+  animation: fadeIn 1.5s ease-in-out forwards; /* Slow fade-in animation */
+  font-weight: 800;
+  background-color: transparent;
+  border: solid 2px #ff5757;
+  border-radius: 4px;
+  color: #ff5757;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+#next:hover {
+  background-color: #fc9d9d;
+  color: #a10000;
+}
+
+/* Slide-left animation */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-20px);
+  }
+}
+
+.slide-left {
+  animation: slideLeft 1s ease-in-out forwards;
+}
+
+/* Media query for responsive design */
+@media (max-width: 600px) {
+  #envelope {
+    max-width: 90%; /* Make the envelope responsive */
+  }
+
+  .reset button {
+    min-width: 100px; /* Adjust button size */
+    font-size: 12px; /* Reduce font size */
+    padding: 8px; /* Adjust padding */
+  }
+}
